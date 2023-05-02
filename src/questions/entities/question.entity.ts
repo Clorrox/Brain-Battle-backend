@@ -7,7 +7,7 @@ export class Question {
   id: string;
 
   @Column('text')
-  qeustion: string;
+  question: string;
 
   @Column('text')
   correctAnswer: string;
