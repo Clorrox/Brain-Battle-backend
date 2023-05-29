@@ -4,7 +4,7 @@ import { Category } from './category.entity';
 @Entity({ name: 'question' })
 export class Question {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id?: string;
 
   @Column('text')
   question: string;
