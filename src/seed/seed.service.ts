@@ -32,7 +32,7 @@ export class SeedService {
         this.questionService.create(question);
       }),
     ]);
-    return 'seed executed';
+    return true;
   }
 
   async createCategory(name: string) {
