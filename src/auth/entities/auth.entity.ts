@@ -15,11 +15,11 @@ export class User {
   level?: number;
   @Column('int', {
     nullable: true,
-    default: 0,
+    default: 100,
   })
   expToNextLevel?: number;
   @Column('int', {
-    default: 100,
+    default: 0,
     nullable: true,
   })
   exp?: number;
