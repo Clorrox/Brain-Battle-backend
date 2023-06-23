@@ -12,6 +12,7 @@ import { User } from '../entities/auth.entity';
 import { Repository } from 'typeorm';
 import { UserData } from '../interfaces/user.interface';
 import { FacebookService } from './facebook.service';
+import { UpdateUserDto } from '../dto/update-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -62,10 +63,23 @@ export class AuthService {
     } catch (error) {
       console.log(error);
       throw new InternalServerErrorException(
-        'Problem with the server contact with admins',
+        'Problem with the server, contact with admins',
       );
     }
   }
+
+  async updateUser(userId: string, updateUserDto: UpdateUserDto){
+    let user = await this.findOneById(userId);
+    
+    user = {...user, ...updateUserDto};
+    try {
+      await this.userRepository.save(user);
+      return user
+    } catch (error) {
+      this.handleDBErrors(error)
+    }
+  }
+
   private handleDBErrors(error: any): never {
     if (error.code === '23505') {
       throw new BadRequestException(error.detail.replace('Key', ''));

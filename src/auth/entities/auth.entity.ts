@@ -15,12 +15,31 @@ export class User {
   level?: number;
   @Column('int', {
     nullable: true,
-    default: 0,
+    default: 100,
   })
   expToNextLevel?: number;
   @Column('int', {
-    default: 100,
+    default: 0,
     nullable: true,
   })
   exp?: number;
+  @Column('int', {
+    default: 0,
+    nullable: true,
+  })
+  gamesPlayed?: number;
+  @Column('int', {
+    nullable: true,
+    default: 0,
+  })
+  gamesWon?: number;
+  @Column('int', {
+    default: 0,
+    nullable: true,
+  })
+  lostGames?: number;
+  @Column('text', {
+    nullable: true,
+  })
+  country?: string;
 }
