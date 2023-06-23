@@ -61,7 +61,6 @@ export class AuthService {
       });
       return userFound;
     } catch (error) {
-      console.log(error);
       throw new InternalServerErrorException(
         'Problem with the server, contact with admins',
       );
